@@ -1,0 +1,19 @@
+clusterArchitecture: ha                     # <string:  cluster architecture, valid values ["single" | "ha" | "eha"]>
+haStandbyReplicas: 2                        # <number:  Number of standby replicas. Field must be specified if user has selected high availability cluster type. Default value is 2, valid values [1, 2].>
+provider: aws                            # <string:  cloud provider id>
+clusterName: tons-cli-cluster               # <string:  cluster name>
+password: justanotherbacluster              # <string:  cluster password (must be at least 12 characters)>
+iamAuthentication: false                    # <bool:    Identity and Access Management, enabling IAM authentication will allow database users to authenticate to Postgres using your cloud provider's IAM(currently supported only for AWS). You can set up IAM authentication after your cluster is provisioned.>
+postgresType: epas                          # <string:  postgresType id, valid values ["postgres" | "epas" | "pgextended"]>
+postgresVersion: "14"                       # <string:  postgres version>
+region: eu-west-1                           # <string:  provider region id>
+instanceType: aws:m5.large                  # <string:  instance type id>
+volumeType: gp3                             # <string:  volume type id>
+volumePropertySize: "4Gi"                   # <string:  Applicable to AWS gp3 only and Azure Ultradisk, volume size in Byte, you may append unit suffix 'Gi' or 'G'.>
+volumePropertyIOPS: 3000                    # <number>: Applicable to AWS gp3 and Azure Ultradisk, volume Input/Output Operations Per Second> 
+networking: private                         # <string:  input "private" or "public" network>
+pgConfigMap:                                # <Object:  Postgres configuration>
+  application_name: test_app                # <string:  set the database "application_name" property to "test_app">
+  array_nulls: true                         # <bool:    set the database "array_nulls" property to True>
+backupRetentionPeriod: 30d                  # <string:  Use strings like “7d“ or “2w“ or “3m” to specify days (1-180), weeks (1-25) or months (1-6) to set retention period>
+readOnlyWorkloads: true                     # <bool:    Set True to enable read-only connection and route all read-only queries to standby replicas and reduce the workload on primary>
