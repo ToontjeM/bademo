@@ -29,7 +29,7 @@ variable "project_id" {
 
 resource "biganimal_cluster" "single_node_cluster" {
   cluster_name = var.cluster_name
-  project_id   = var.project_id
+  project_id   = "prj_8IUfXybHQsx2cu1T"
 
 /*
   allowed_ip_ranges {
