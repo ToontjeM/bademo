@@ -2,23 +2,11 @@
 
 ## Demo prep
 
-Log in to Big Animal using OKTA
+Log in to Big Animal
 
-Make sure the CLI is authenticated against AWS and Azure
+Make sure the CLI is authenticated against AWS and Azure of you want to use those.
 
-`biganimal credential create --name “ton”`
-
-`biganimal config set confirm_mode off`
-
-`source ./profile_terraform.sh`
-
-`ba_api_get_call`
-
-`export_BA_env_vars`
-
-`EXPORT TF_VAR_cluster_name=tons_tf_cluster`
-
-`Terraform init`
+Initialize the environment using `./00-prep.sh`
 
 ## Demo flow
 ### Web UI
@@ -72,13 +60,20 @@ Create cluster
 
 `biganimal cluster show`
 
+(Optional) `biganimal cluster delete --id <put id here>`
+
 ## Terraform
 `cat resource-rs.tf`
+
 `terraform init`
 
 `terraform plan`
 
-## Demo Cleanup
-`terraform destroy --auto-approve`
+`terraform apply --auto-approve`
 
-`biganimal cluster delete --id <put id here>`
+`biganimal cluster show`
+
+(Optional) `terraform destroy --auto-approve`
+
+## Demo Cleanup 
+Either demo `biganimal cluster delete --id <clusterid>` and  `terraform destroy --auto-approve` manually or run `./99-deprovision.sh` which does it for you.
